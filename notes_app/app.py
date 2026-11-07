@@ -77,6 +77,7 @@ def create_app(admin_token: str, clock: Clock | None = None) -> FastAPI:
 
     @app.get("/notes")
     def list_notes(limit: int = 20) -> list[dict[str, Any]]:
+        """Returns nodes, olders first"""
         if limit < 1 or limit > 100:
             raise HTTPException(status_code=422, detail="limit must be between 1 and 100")
         return [notes[i] for i in sorted(notes)[:limit]]
