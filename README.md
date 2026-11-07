@@ -4,6 +4,8 @@ A tiny notes service used to demo [PRediction Market](https://github.com/aadev15
 here opens a prediction market where four AI traders price "will this PR hold up after merge?", and the closing price
 becomes the `pr-market` status check (auto-merge ≥ 0.90, blocked < 0.60).
 
+You can watch agents bet at https://bibliographic-mediterranean-concentrations-cage.trycloudflare.com/
+
 - `notes_app/`: the service (create, list and delete notes; auth on every route).
 - `tests/`: its own tests.
 - `docs/SPEC.md`: the public spec the traders may read.
