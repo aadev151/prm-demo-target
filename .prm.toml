@@ -1,0 +1,22 @@
+# PRediction Market contract for this repo (read from the PR's BASE sha). Every PR opens a market; the closing price
+# is the `pr-market` status. Merged PRs settle post-merge: NO if a revert or a bug fix to the PR's lines lands within
+# [postmerge].window_days, else YES.
+
+[target]
+name = "prm-demo-target"
+spec = "docs/SPEC.md"
+
+[settle]
+driver = "local"
+setup = ""
+command = "python -m pytest -q -p no:cacheprovider --junitxml={junit}"
+timeout_s = 180
+env = { PYTHONPATH = "{head}" }
+
+[postmerge]
+window_days = 14
+
+[context]
+test_globs = ["tests/**", "**/test_*.py", "**/*_test.py"]
+sensitive_globs = ["**/auth*", "**/security*", "**/permissions*", "**/middleware*", ".github/**", "**/*.env*"]
+source_globs = ["**/*.py"]
